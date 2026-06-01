@@ -1,5 +1,5 @@
 import express from 'express';
-import {sendMessage, getAllChats, getChatById, deleteChat, clearChat, getRoadmap} from '../controller/chatController.js';
+import {sendMessage, getAllChats, getChatById, deleteChat, clearChat, getRoadmap,getChatMessages} from '../controller/chatController.js';
 import protect from '../middleware/auth.js';
 import rateLimit from 'express-rate-limit';
 
@@ -23,5 +23,5 @@ router.get('/roadmap',getRoadmap);
 router.get('/:chatId',getChatById);
 router.delete('/:chatId',deleteChat);
 router.put('/:chatId/clear',clearChat);
-
+router.get('/:chatId/messages', getChatMessages);
 export default router;

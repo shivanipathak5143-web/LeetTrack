@@ -309,3 +309,25 @@ export const getRoadmap = async (req, res, next) => {
     next(error);
   }
 };
+export const getChatMessages = async (req, res, next) => {
+  try {
+    const chat = await ChatHistory.findOne({
+      _id: req.params.chatId,
+      user: req.user._id,
+    });
+
+    if (!chat) {
+      return res.status(404).json({
+        success: false,
+        error: "Chat not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: chat.messages,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
