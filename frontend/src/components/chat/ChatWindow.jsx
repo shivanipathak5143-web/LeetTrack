@@ -189,7 +189,7 @@ export default function ChatWindow({ sessionId, onSessionCreate }) {
               border: 'none', cursor: input.trim() && !sending ? 'pointer' : 'not-allowed',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               transition: 'all 0.2s',
-              color: input.trim() && !sending ? 'white' : 'var(--text-muted)',
+              color: input.trim() && !sending ? 'var(--accent-ink)' : 'var(--text-muted)',
             }}
           >
             {sending ? <Loader size={15} style={{ animation: 'spin 0.8s linear infinite' }} /> : <Send size={15} />}
