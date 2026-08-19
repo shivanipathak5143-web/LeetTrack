@@ -145,7 +145,7 @@ export default function LogProblem() {
                     fontFamily: 'var(--font-display)', fontWeight: 600,
                     cursor: 'pointer', transition: 'all 0.15s',
                     background: form.topics.includes(topic) ? 'var(--accent)' : 'var(--bg-elevated)',
-                    color: form.topics.includes(topic) ? 'white' : 'var(--text-muted)',
+                    color: form.topics.includes(topic) ? 'var(--accent-ink)' : 'var(--text-muted)',
                     border: `1px solid ${form.topics.includes(topic) ? 'var(--accent)' : 'var(--border)'}`,
                   }}
                 >

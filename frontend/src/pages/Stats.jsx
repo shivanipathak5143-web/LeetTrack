@@ -7,7 +7,7 @@ import {
 import { getDashboard, getTopicBreakdown, getDifficultyBreakdown, getProgressChart, getWeakSpots } from '../api/statsAPI';
 import Loader from '../components/ui/Loader';
 
-const PIE_COLORS = ['#4ade80', '#fbbf24', '#f87171'];
+const PIE_COLORS = ['#4ade9a', '#f2b84c', '#f2694c'];
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload?.length) {

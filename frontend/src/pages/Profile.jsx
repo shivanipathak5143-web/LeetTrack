@@ -64,9 +64,9 @@ export default function Profile() {
               onClick={() => setActiveTab(id)}
               style={{
                 width: '100%', display: 'flex', alignItems: 'center', gap: 10,
-                padding: '10px 12px', borderRadius: 8, cursor: 'pointer',
-                background: activeTab === id ? 'var(--accent-glow)' : 'transparent',
-                color: activeTab === id ? 'var(--accent)' : 'var(--text-secondary)',
+                padding: '10px 12px', borderRadius: 6, cursor: 'pointer',
+                background: activeTab === id ? 'var(--accent)' : 'transparent',
+                color: activeTab === id ? 'var(--accent-ink)' : 'var(--text-secondary)',
                 border: 'none', fontFamily: 'var(--font-display)', fontWeight: 600,
                 fontSize: 14, transition: 'all 0.15s', marginBottom: 2,
               }}
@@ -84,10 +84,10 @@ export default function Profile() {
               {/* Avatar */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 28, paddingBottom: 24, borderBottom: '1px solid var(--border)' }}>
                 <div style={{
-                  width: 64, height: 64, borderRadius: '50%',
-                  background: 'linear-gradient(135deg, var(--accent), var(--green))',
+                  width: 64, height: 64, borderRadius: 10,
+                  background: 'var(--accent)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 28, color: 'white',
+                  fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 26, color: 'var(--accent-ink)',
                 }}>
                   {user?.name?.[0]?.toUpperCase() || 'U'}
                 </div>

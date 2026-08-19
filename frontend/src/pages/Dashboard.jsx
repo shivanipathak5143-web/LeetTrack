@@ -31,7 +31,13 @@ export default function Dashboard() {
         if (d.status === 'fulfilled') setDashboard(d.value.data?.data);
         if (h.status === 'fulfilled') setHeatmap(h.value.data?.data || {});
         if (str.status === 'fulfilled') setStreak(str.value.data?.data || {});
-        if (logs.status === 'fulfilled') setRecentLogs(logs.value.data?.data || []);
+        if (logs.status === 'fulfilled') {
+          const dailyLogs = logs.value.data?.data || [];
+          const problems = dailyLogs.flatMap(day =>
+            (day.problemsSolved || []).map(p => ({ ...p, date: day.date }))
+          );
+          setRecentLogs(problems.slice(0, 5));
+        }
       } finally {
         setLoading(false);
       }
@@ -159,7 +165,7 @@ export default function Dashboard() {
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {recentLogs.map((log, i) => (
-              <div key={log._id || i} style={{
+              <div key={`${log.date}-${log.titleSlug || i}`} style={{
                 display: 'flex', alignItems: 'center', gap: 12,
                 padding: '12px 14px', background: 'var(--bg-elevated)',
                 borderRadius: 8, border: '1px solid var(--border)',
@@ -186,7 +192,7 @@ export default function Dashboard() {
                   color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11
                 }}>
                   <Clock size={11} />
-                  {log.solvedAt ? format(new Date(log.solvedAt), 'MMM d') : ''}
+                  {log.date ? format(new Date(log.date), 'MMM d') : ''}
                 </div>
               </div>
             ))}

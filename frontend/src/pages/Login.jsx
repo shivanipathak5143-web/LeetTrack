@@ -32,20 +32,6 @@ export default function Login() {
       background: 'var(--bg-base)',
       position: 'relative', overflow: 'hidden',
     }}>
-      {/* Background effects */}
-      <div style={{
-        position: 'absolute', top: '20%', left: '10%',
-        width: 400, height: 400, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(124,106,247,0.08) 0%, transparent 70%)',
-        pointerEvents: 'none',
-      }} />
-      <div style={{
-        position: 'absolute', bottom: '10%', right: '5%',
-        width: 300, height: 300, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(34,211,165,0.06) 0%, transparent 70%)',
-        pointerEvents: 'none',
-      }} />
-
       {/* Left panel */}
       <div style={{
         flex: 1, display: 'flex', flexDirection: 'column',
@@ -56,20 +42,20 @@ export default function Login() {
           {/* Logo */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 48 }}>
             <div style={{
-              width: 40, height: 40, borderRadius: 10,
-              background: 'linear-gradient(135deg, var(--accent), var(--accent-dim))',
+              width: 40, height: 40, borderRadius: 8,
+              background: 'transparent', border: '1px solid var(--accent)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}>
-              <Code2 size={20} color="white" />
+              <Code2 size={19} color="var(--accent)" />
             </div>
-            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 20 }}>
+            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 20 }}>
               LeetTrack
             </span>
           </div>
 
           <h1 style={{
-            fontFamily: 'var(--font-display)', fontWeight: 800,
-            fontSize: 34, letterSpacing: '-0.03em', marginBottom: 8,
+            fontFamily: 'var(--font-display)', fontWeight: 700,
+            fontSize: 32, letterSpacing: '-0.02em', marginBottom: 8,
             lineHeight: 1.1,
           }}>
             Welcome back

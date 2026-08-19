@@ -8,9 +8,9 @@ import { format } from 'date-fns';
 const DIFFS = ['All', 'Easy', 'Medium', 'Hard'];
 
 const diffColors = {
-  Easy: { bg: 'rgba(0,184,163,0.12)', color: '#00b8a3', border: 'rgba(0,184,163,0.3)' },
-  Medium: { bg: 'rgba(255,192,30,0.12)', color: '#ffc01e', border: 'rgba(255,192,30,0.3)' },
-  Hard: { bg: 'rgba(255,55,95,0.12)', color: '#ff375f', border: 'rgba(255,55,95,0.3)' },
+  Easy: { bg: 'var(--green-dim)', color: 'var(--green)', border: 'rgba(74,222,154,0.3)' },
+  Medium: { bg: 'var(--yellow-dim)', color: 'var(--yellow)', border: 'rgba(242,184,76,0.3)' },
+  Hard: { bg: 'var(--red-dim)', color: 'var(--red)', border: 'rgba(242,105,76,0.3)' },
 };
 
 export default function History() {
@@ -100,7 +100,7 @@ export default function History() {
                 padding: '7px 14px', borderRadius: 8, fontSize: 13, fontWeight: 600,
                 fontFamily: 'var(--font-display)', cursor: 'pointer', transition: 'all 0.15s',
                 background: diff === d ? 'var(--accent)' : 'var(--bg-elevated)',
-                color: diff === d ? 'white' : 'var(--text-muted)',
+                color: diff === d ? 'var(--accent-ink)' : 'var(--text-muted)',
                 border: `1px solid ${diff === d ? 'var(--accent)' : 'var(--border)'}`,
               }}
             >
@@ -153,7 +153,7 @@ export default function History() {
                   style={{
                     display: 'flex', alignItems: 'center', gap: 12,
                     padding: '16px 20px', cursor: 'pointer',
-                    background: isOpen ? 'rgba(255,255,255,0.03)' : 'transparent',
+                    background: isOpen ? 'var(--bg-hover)' : 'transparent',
                     transition: 'background 0.15s',
                   }}
                 >
@@ -235,7 +235,7 @@ export default function History() {
                           <div>
                             <pre style={{
                               margin: 0, padding: '14px 16px', borderRadius: 8, fontSize: 12,
-                              fontFamily: 'var(--font-mono)', background: 'rgba(0,0,0,0.3)',
+                              fontFamily: 'var(--font-mono)', background: 'var(--bg-surface)',
                               border: '1px solid var(--border)', color: 'var(--text-muted)',
                               overflowX: 'auto', lineHeight: 1.6, whiteSpace: 'pre-wrap', wordBreak: 'break-word',
                             }}>
@@ -335,7 +335,7 @@ function InfoPill({ icon, label, value }) {
   return (
     <div style={{
       display: 'flex', alignItems: 'center', gap: 5, padding: '4px 10px',
-      borderRadius: 6, background: 'rgba(255,255,255,0.04)', border: '1px solid var(--border)',
+      borderRadius: 6, background: 'var(--bg-hover)', border: '1px solid var(--border)',
       fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)',
     }}>
       {icon}
@@ -357,7 +357,7 @@ function SolutionEditor({ initial, onSave, onCancel }) {
         style={{
           width: '100%', padding: '12px 14px', borderRadius: 8, resize: 'vertical',
           fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.6,
-          background: 'rgba(0,0,0,0.35)', border: '1px solid var(--border)',
+          background: 'var(--bg-surface)', border: '1px solid var(--border)',
           color: 'var(--text-muted)', outline: 'none', boxSizing: 'border-box',
         }}
         autoFocus

@@ -35,30 +35,23 @@ export default function Register() {
       justifyContent: 'center', background: 'var(--bg-base)',
       padding: '40px 20px', position: 'relative', overflow: 'hidden',
     }}>
-      <div style={{
-        position: 'absolute', top: '10%', right: '15%',
-        width: 350, height: 350, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(124,106,247,0.07) 0%, transparent 70%)',
-        pointerEvents: 'none',
-      }} />
-
       <div style={{ width: '100%', maxWidth: 440 }}>
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 40, justifyContent: 'center' }}>
           <div style={{
-            width: 40, height: 40, borderRadius: 10,
-            background: 'linear-gradient(135deg, var(--accent), var(--accent-dim))',
+            width: 40, height: 40, borderRadius: 8,
+            background: 'transparent', border: '1px solid var(--accent)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
-            <Code2 size={20} color="white" />
+            <Code2 size={19} color="var(--accent)" />
           </div>
-          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 20 }}>LeetTrack</span>
+          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 20 }}>LeetTrack</span>
         </div>
 
         <div className="card" style={{ padding: '36px 32px' }}>
           <h1 style={{
-            fontFamily: 'var(--font-display)', fontWeight: 800,
-            fontSize: 26, letterSpacing: '-0.02em', marginBottom: 6,
+            fontFamily: 'var(--font-display)', fontWeight: 700,
+            fontSize: 25, letterSpacing: '-0.01em', marginBottom: 6,
           }}>
             Create your account
           </h1>
@@ -70,7 +63,7 @@ export default function Register() {
             <div className="form-group">
               <label className="form-label">Username</label>
               <input className="form-input" type="text" placeholder="alex_johnson"
-                value={form.name} onChange={set('name')} required />
+                value={form.username} onChange={set('username')} required />
             </div>
 
             <div className="form-group">
