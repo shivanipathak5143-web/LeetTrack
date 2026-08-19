@@ -11,21 +11,14 @@ export default function StatsCard({ title, value, subtitle, icon: Icon, color = 
   const c = colorMap[color] || colorMap.accent;
 
   return (
-    <div className="card animate-in" style={{ position: 'relative', overflow: 'hidden' }}>
-      {/* Background gradient blob */}
-      <div style={{
-        position: 'absolute', top: -20, right: -20,
-        width: 80, height: 80, borderRadius: '50%',
-        background: c.bg, filter: 'blur(20px)', opacity: 0.6
-      }} />
-
-      <div style={{ position: 'relative' }}>
+    <div className="card animate-in">
+      <div>
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 16 }}>
           <div style={{
-            width: 40, height: 40, borderRadius: 10,
-            background: c.bg, display: 'flex',
+            width: 38, height: 38, borderRadius: 6,
+            background: 'transparent', display: 'flex',
             alignItems: 'center', justifyContent: 'center',
-            border: `1px solid ${c.color}33`
+            border: `1px solid ${c.color}`
           }}>
             {Icon && <Icon size={18} color={c.color} />}
           </div>

@@ -55,7 +55,7 @@ export default function ChatSidebar({ activeSession, onSelect, onNew }) {
                 display: 'flex', alignItems: 'center', gap: 8,
                 padding: '9px 10px', borderRadius: 8, cursor: 'pointer',
                 background: activeSession === chat.id ? 'var(--accent-glow)' : 'transparent',
-                border: `1px solid ${activeSession === chat.id ? 'rgba(124,106,247,0.2)' : 'transparent'}`,
+                border: `1px solid ${activeSession === chat.id ? 'var(--accent-glow-strong)' : 'transparent'}`,
                 marginBottom: 2, transition: 'all 0.15s', position: 'relative',
               }}
               onMouseOver={e => { if (activeSession !== chat.id) e.currentTarget.style.background = 'var(--bg-hover)'; }}

@@ -14,21 +14,18 @@ export default function ChatMessage({ message }) {
     }}>
       {/* Avatar */}
       <div style={{
-        width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
-        background: isUser
-          ? 'linear-gradient(135deg, var(--accent), var(--accent-dim))'
-          : 'linear-gradient(135deg, var(--green), #0e9e7b)',
+        width: 32, height: 32, borderRadius: 7, flexShrink: 0,
+        background: isUser ? 'var(--accent)' : 'var(--green)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        border: `2px solid ${isUser ? 'var(--accent-glow)' : 'var(--green-dim)'}`,
       }}>
-        {isUser ? <User size={14} color="white" /> : <Bot size={14} color="white" />}
+        {isUser ? <User size={14} color="var(--accent-ink)" /> : <Bot size={14} color="var(--bg-base)" />}
       </div>
 
       {/* Bubble */}
       <div style={{
         maxWidth: '72%',
         background: isUser ? 'var(--accent-glow)' : 'var(--bg-elevated)',
-        border: `1px solid ${isUser ? 'rgba(124,106,247,0.25)' : 'var(--border)'}`,
+        border: `1px solid ${isUser ? 'var(--accent-glow-strong)' : 'var(--border)'}`,
         borderRadius: isUser ? '16px 4px 16px 16px' : '4px 16px 16px 16px',
         padding: '12px 16px',
       }}>

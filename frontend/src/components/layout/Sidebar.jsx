@@ -38,18 +38,18 @@ export default function Sidebar() {
         display: 'flex', alignItems: 'center', gap: 10
       }}>
         <div style={{
-          width: 34, height: 34, borderRadius: 8,
-          background: 'linear-gradient(135deg, var(--accent), var(--accent-dim))',
+          width: 34, height: 34, borderRadius: 6,
+          background: 'transparent', border: '1px solid var(--accent)',
           display: 'flex', alignItems: 'center', justifyContent: 'center'
         }}>
-          <Code2 size={18} color="white" />
+          <Code2 size={17} color="var(--accent)" />
         </div>
         <div>
-          <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 17, letterSpacing: '-0.01em' }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 17, letterSpacing: '-0.01em' }}>
             LeetTrack
           </div>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.05em' }}>
-            DSA PLATFORM
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.08em' }}>
+            DSA_PLATFORM
           </div>
         </div>
       </div>
@@ -65,10 +65,9 @@ export default function Sidebar() {
               padding: '10px 12px', borderRadius: 8,
               fontFamily: 'var(--font-display)', fontWeight: 600,
               fontSize: 14, transition: 'all 0.15s',
-              color: isActive ? 'var(--accent)' : 'var(--text-secondary)',
-              background: isActive ? 'var(--accent-glow)' : 'transparent',
+              color: isActive ? 'var(--accent-ink)' : 'var(--text-secondary)',
+              background: isActive ? 'var(--accent)' : 'transparent',
               textDecoration: 'none',
-              ...(isActive ? { borderLeft: '2px solid var(--accent)', padding: '10px 12px 10px 10px' } : {}),
             })}
           >
             <Icon size={16} />
@@ -82,8 +81,8 @@ export default function Sidebar() {
         {/* Streak badge */}
         <div style={{
           display: 'flex', alignItems: 'center', gap: 8,
-          background: 'rgba(245, 197, 66, 0.08)', border: '1px solid rgba(245, 197, 66, 0.2)',
-          borderRadius: 8, padding: '8px 12px', marginBottom: 8
+          background: 'var(--yellow-dim)', border: '1px solid rgba(242, 184, 76, 0.25)',
+          borderRadius: 6, padding: '8px 12px', marginBottom: 8
         }}>
           <Zap size={14} color="var(--yellow)" fill="var(--yellow)" />
           <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--yellow)' }}>
@@ -93,10 +92,10 @@ export default function Sidebar() {
 
         <NavLink to="/profile" style={({ isActive }) => ({
           display: 'flex', alignItems: 'center', gap: 10,
-          padding: '10px 12px', borderRadius: 8,
-          color: isActive ? 'var(--accent)' : 'var(--text-secondary)',
+          padding: '10px 12px', borderRadius: 6,
+          color: isActive ? 'var(--accent-ink)' : 'var(--text-secondary)',
           fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 14,
-          textDecoration: 'none', background: isActive ? 'var(--accent-glow)' : 'transparent',
+          textDecoration: 'none', background: isActive ? 'var(--accent)' : 'transparent',
           transition: 'all 0.15s'
         })}>
           <User size={16} />
@@ -122,14 +121,14 @@ export default function Sidebar() {
         {/* User info */}
         <div style={{
           marginTop: 4, padding: '10px 12px',
-          borderRadius: 8, background: 'var(--bg-elevated)',
+          borderRadius: 6, background: 'var(--bg-elevated)', border: '1px solid var(--border)',
           display: 'flex', alignItems: 'center', gap: 10
         }}>
           <div style={{
-            width: 30, height: 30, borderRadius: '50%',
-            background: 'linear-gradient(135deg, var(--accent), var(--green))',
+            width: 30, height: 30, borderRadius: 6,
+            background: 'var(--accent)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 13, color: 'white',
+            fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 13, color: 'var(--accent-ink)',
             flexShrink: 0
           }}>
             {user?.name?.[0]?.toUpperCase() || 'U'}
