@@ -1,6 +1,6 @@
 import { TrendingUp, TrendingDown } from 'lucide-react';
 
-export default function StatsCard({ title, value, subtitle, icon: Icon, color = 'accent', trend, trendValue }) {
+export default function StatsCard({ title, value, subtitle, icon: Icon, color = 'accent', trend, trendValue, delay = 0 }) {
   const colorMap = {
     accent: { bg: 'var(--accent-glow)', color: 'var(--accent)' },
     green: { bg: 'var(--green-dim)', color: 'var(--green)' },
@@ -11,7 +11,7 @@ export default function StatsCard({ title, value, subtitle, icon: Icon, color = 
   const c = colorMap[color] || colorMap.accent;
 
   return (
-    <div className="card animate-in">
+    <div className="card animate-in" style={{ '--stagger-delay': `${delay}ms` }}>
       <div>
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 16 }}>
           <div style={{

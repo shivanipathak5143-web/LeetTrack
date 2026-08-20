@@ -7,7 +7,7 @@ export default function StreakCard({ current = 0, longest = 0, lastSolved }) {
     }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 15 }}>Streak</span>
-        <Flame size={18} color="var(--yellow)" />
+        <Flame size={18} color="var(--yellow)" className={current > 0 ? 'pulse-flame' : ''} />
       </div>
 
       <div style={{ display: 'flex', gap: 20 }}>

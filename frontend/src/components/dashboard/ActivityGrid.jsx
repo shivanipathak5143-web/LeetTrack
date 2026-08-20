@@ -84,7 +84,7 @@ export default function ActivityGrid({ data }) {
       <div style={{ display: 'flex', gap: 3, overflowX: 'auto', paddingBottom: 4 }}>
         {weeks.map((week, wi) => (
           <div key={wi} style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            {week.map(day => (
+            {week.map((day, di) => (
               <div
                 key={day.key}
                 title={`${day.key}: ${day.count} solved`}
@@ -92,6 +92,9 @@ export default function ActivityGrid({ data }) {
                   width: 12, height: 12, borderRadius: 3,
                   background: day.future ? 'transparent' : LEVEL_COLORS[levelFor(day.count)],
                   border: day.future ? '1px solid var(--border)' : 'none',
+                  opacity: day.future ? 1 : 0,
+                  animation: day.future ? 'none' : 'popIn 0.3s ease forwards',
+                  animationDelay: `${(wi * 7 + di) * 4}ms`,
                 }}
               />
             ))}

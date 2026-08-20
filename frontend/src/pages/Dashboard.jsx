@@ -69,6 +69,7 @@ export default function Dashboard() {
           icon={CheckCircle}
           color="accent"
           subtitle="all time"
+          delay={0}
         />
         <StatsCard
           title="Easy"
@@ -76,6 +77,7 @@ export default function Dashboard() {
           icon={Target}
           color="green"
           subtitle="problems"
+          delay={60}
         />
         <StatsCard
           title="Medium"
@@ -83,6 +85,7 @@ export default function Dashboard() {
           icon={Zap}
           color="yellow"
           subtitle="problems"
+          delay={120}
         />
         <StatsCard
           title="Hard"
@@ -90,6 +93,7 @@ export default function Dashboard() {
           icon={BookOpen}
           color="red"
           subtitle="problems"
+          delay={180}
         />
       </div>
 

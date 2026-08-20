@@ -116,9 +116,13 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 24px;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
-.card:hover { border-color: var(--border-bright); }
+.card:hover {
+  border-color: var(--border-bright);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
 
 .btn {
   display: inline-flex;
@@ -219,8 +223,25 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
+@keyframes pulseFlame {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.75; }
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
 
-.animate-in { animation: fadeIn 0.35s ease forwards; }
+.animate-in {
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
+  animation-delay: var(--stagger-delay, 0ms);
+}
+
+.pulse-flame { animation: pulseFlame 1.8s ease-in-out infinite; }
+
+/* Button micro-interaction */
+.btn:active { transform: scale(0.97); }
 
 /* Skeleton loader */
 .skeleton {
