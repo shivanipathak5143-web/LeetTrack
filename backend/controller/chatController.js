@@ -11,7 +11,7 @@ dotenv.config();
 const GROQ_API = "https://api.groq.com/openai/v1/chat/completions";
 
 // You can change model here
-const MODEL = "llama-3.3-70b-versatile";
+const MODEL = "openai/gpt-oss-120b";
 
 // ── CALL GROQ API ─────────────────────────────────────────
 const callGroq = async (systemPrompt, messages, maxTokens = 1500) => {
