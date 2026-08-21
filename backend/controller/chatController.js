@@ -11,10 +11,19 @@ dotenv.config();
 const GROQ_API = "https://api.groq.com/openai/v1/chat/completions";
 
 // You can change model here
-const MODEL = "openai/gpt-oss-120b";
+const MODEL = "groq/compound-mini";
+
+// Max characters kept per historical message before sending to Groq
+// (prevents huge past AI replies from blowing up the request payload)
+const MAX_MSG_CHARS = 1200;
+
+const truncate = (content) =>
+  content.length > MAX_MSG_CHARS
+    ? content.slice(0, MAX_MSG_CHARS) + "\n\n[...truncated for length]"
+    : content;
 
 // ── CALL GROQ API ─────────────────────────────────────────
-const callGroq = async (systemPrompt, messages, maxTokens = 1500) => {
+const callGroq = async (systemPrompt, messages, maxTokens = 1024) => {
   const response = await fetch(GROQ_API, {
     method: "POST",
     headers: {
@@ -108,16 +117,17 @@ export const sendMessage = async (req, res, next) => {
       });
     }
 
-    // Save user message
+    // Save user message (full, untruncated — this is what's stored in DB)
     chat.messages.push({
       role: "user",
       content: message.trim(),
     });
 
-    // Last 20 messages for context
-    const recentMessages = chat.messages.slice(-20).map((m) => ({
+    // Last 6 messages for context, each capped in length before sending to Groq.
+    // This keeps both token count AND raw payload size under control.
+    const recentMessages = chat.messages.slice(-6).map((m) => ({
       role: m.role,
-      content: m.content,
+      content: truncate(m.content),
     }));
 
     // System prompt
@@ -129,7 +139,7 @@ export const sendMessage = async (req, res, next) => {
       recentMessages
     );
 
-    // Save assistant reply
+    // Save assistant reply (full, untruncated — stored in DB as-is)
     chat.messages.push({
       role: "assistant",
       content: assistantReply,
@@ -296,7 +306,7 @@ export const getRoadmap = async (req, res, next) => {
           content: roadmapMessage,
         },
       ],
-      2000
+      1500
     );
 
     res.status(200).json({
@@ -309,6 +319,7 @@ export const getRoadmap = async (req, res, next) => {
     next(error);
   }
 };
+
 export const getChatMessages = async (req, res, next) => {
   try {
     const chat = await ChatHistory.findOne({

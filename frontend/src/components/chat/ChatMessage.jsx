@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { Bot, User } from 'lucide-react';
 
 export default function ChatMessage({ message }) {
@@ -14,19 +15,20 @@ export default function ChatMessage({ message }) {
     }}>
       {/* Avatar */}
       <div style={{
-        width: 32, height: 32, borderRadius: 7, flexShrink: 0,
-        background: isUser ? 'var(--accent)' : 'var(--green)',
+        width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
+        background: isUser ? 'var(--text-primary)' : 'var(--green)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
+        border: `2px solid ${isUser ? 'var(--accent-glow)' : 'var(--green-dim)'}`,
       }}>
-        {isUser ? <User size={14} color="var(--accent-ink)" /> : <Bot size={14} color="var(--bg-base)" />}
+        {isUser ? <User size={14} color="var(--bg-elevated)" /> : <Bot size={14} color="var(--bg-elevated)" />}
       </div>
 
       {/* Bubble */}
       <div style={{
         maxWidth: '72%',
         background: isUser ? 'var(--accent-glow)' : 'var(--bg-elevated)',
-        border: `1px solid ${isUser ? 'var(--accent-glow-strong)' : 'var(--border)'}`,
-        borderRadius: isUser ? '16px 4px 16px 16px' : '4px 16px 16px 16px',
+        border: `1px solid ${isUser ? 'rgba(199,144,10,0.25)' : 'var(--border)'}`,
+        borderRadius: isUser ? '14px 4px 14px 14px' : '4px 14px 14px 14px',
         padding: '12px 16px',
       }}>
         {isUser ? (
@@ -36,7 +38,7 @@ export default function ChatMessage({ message }) {
         ) : (
           <div style={{ fontSize: 14, lineHeight: 1.7, color: 'var(--text-primary)' }}
             className="markdown-body">
-            <ReactMarkdown>{message.content}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
           </div>
         )}
         <div style={{
