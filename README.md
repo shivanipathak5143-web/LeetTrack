@@ -1,53 +1,80 @@
+<div align="center">
+
 # 🧠 LeetTrack
 
-**An AI-powered LeetCode tracking and DSA mentorship platform**
+### AI-Powered LeetCode Tracking & DSA Mentorship Platform
 
-LeetTrack helps you stay consistent with Data Structures & Algorithms practice — log problems, visualize your progress, track streaks, and get personalized 1-on-1 guidance from an AI mentor trained to coach you through DSA the way a real mentor would.
+Track your DSA journey, visualize your growth, and get personalized coaching from an AI mentor — built to keep you consistent and interview-ready.
 
----
+![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=flat&logo=JSON%20web%20tokens)
+![Groq](https://img.shields.io/badge/Groq-F55036?style=flat&logo=groq&logoColor=white)
 
-## ✨ Features
-
-- 📝 **Problem Logging** — Track every LeetCode problem you solve, with difficulty, topic, and notes
-- 📊 **Visual Dashboards** — See your progress at a glance with stats cards and breakdowns by difficulty
-- 🔥 **Streak & Heatmap Analytics** — Stay motivated with daily streak tracking and a GitHub-style activity heatmap
-- 🤖 **AI Mentor Chat** — Get personalized DSA guidance powered by the Groq API — hints, concept explanations, code review, and custom roadmaps, tailored to your current progress
-- 🔐 **Secure Authentication** — JWT-based auth to keep your data private and your account secure
-- 📈 **Progress History** — Full searchable history of every problem you've logged
+</div>
 
 ---
 
-## 🛠️ Tech Stack
+## Overview
 
-**Frontend**
-- React
-- React Router
+LeetTrack is a full-stack MERN application built for anyone serious about mastering Data Structures & Algorithms. Instead of just tracking what you've solved, it acts as a full mentorship layer — combining progress analytics with an AI coach that understands your stats and guides you accordingly.
 
-**Backend**
-- Node.js
-- Express
-- MongoDB (Mongoose)
-- JWT Authentication
+## Core Features
 
-**AI**
-- Groq API for the mentor chat
+| Feature | Description |
+|---|---|
+| 🎯 **Problem Logging** | Log every problem you solve with difficulty, topic, and personal notes |
+| 📊 **Dashboards** | Visual breakdown of your solved problems by difficulty and topic |
+| 🔥 **Streaks & Heatmap** | GitHub-style activity heatmap and daily streak tracking to build consistency |
+| 🤖 **AI Mentor Chat** | Groq-powered DSA coach — hints, concept breakdowns, code review, custom roadmaps |
+| 🔐 **Auth** | Secure JWT-based authentication |
+| 📈 **History** | Full searchable log of past problems and chat sessions |
 
----
+## Tech Stack
 
-## 🚀 Getting Started
+**Frontend:** React, React Router  
+**Backend:** Node.js, Express, MongoDB, Mongoose  
+**Auth:** JSON Web Tokens (JWT)  
+**AI:** Groq API
 
-### Prerequisites
-- Node.js (v18+)
-- MongoDB instance (local or Atlas)
-- A [Groq API key](https://console.groq.com)
+## Quick Start
 
+```bash
+# Clone
+git clone https://github.com/your-username/leettrack.git
+cd leettrack
+
+# Install backend
+cd backend && npm install
+
+# Install frontend
+cd ../frontend && npm install
 ```
-## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome. Feel free to check the [issues page](https://github.com/shivanipathak5143-web/LeetTrack/issues).
+**Backend `.env`**
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+GROQ_API_KEY=your_groq_api_key
+```
 
----
+**Frontend `.env`**
+```env
+VITE_API_URL=http://localhost:5000/api
+```
 
-## 📄 License
+**Run it**
+```bash
+# Terminal 1
+cd backend && npm run dev
 
-This project is licensed under the MIT License.
+# Terminal 2
+cd frontend && npm run dev
+```
+
+## License
+
+MIT
