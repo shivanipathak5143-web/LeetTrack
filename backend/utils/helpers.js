@@ -10,7 +10,6 @@ export const parseDate = (dateStr) => {
   return new Date(dateStr + "T00:00:00.000Z");
 };
 
-/** Returns array of date strings for the last N days */
 export const getLastNDays = (n) => {
   const dates = [];
   for (let i = n - 1; i >= 0; i--) {
