@@ -21,7 +21,7 @@ Track your DSA journey, visualize your growth, and get personalized coaching fro
 
 ## Overview
 
-LeetTrack is a full-stack MERN application built for anyone serious about mastering Data Structures & Algorithms. Instead of just tracking what you've solved, it acts as a full mentorship layer — combining progress analytics with an AI coach that understands your stats and guides you accordingly.
+LeetTrack is a full-stack application built for anyone serious about mastering Data Structures & Algorithms. Instead of just tracking what you've solved, it acts as a full mentorship layer — combining progress analytics with an AI coach that understands your stats and guides you accordingly.
 
 ## Core Features
 
