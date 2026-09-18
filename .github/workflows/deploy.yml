@@ -1,0 +1,31 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy backend
+        if: contains(github.event.head_commit.modified, 'backend/') || contains(github.event.head_commit.added, 'backend/')
+        run: |
+          cd ~/LeetTrack/backend
+          git pull
+          npm install
+          pm2 restart leettrack-backend
+
+      - name: Deploy frontend
+        if: contains(github.event.head_commit.modified, 'frontend/') || contains(github.event.head_commit.added, 'frontend/')
+        run: |
+          cd ~/LeetTrack/frontend
+          git pull
+          npm install
+          npm run build
+          sudo rm -rf /var/www/frontend/*
+          sudo cp -r dist/* /var/www/frontend/
+          sudo chown -R nginx:nginx /var/www/frontend
