@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Send, Loader, Sparkles, Map } from 'lucide-react';
+import { Send, Loader, Sparkles, Map, MessagesSquare } from 'lucide-react';
 import { sendMessage, getRoadmap, getChatMessages } from '../../api/chatAPI';
 import ChatMessage from './ChatMessage';
 
@@ -10,7 +10,7 @@ const STARTERS = [
   "Review my approach to graph problems",
 ];
 
-export default function ChatWindow({ sessionId, onSessionCreate }) {
+export default function ChatWindow({ sessionId, onSessionCreate, onOpenChatList }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [sending, setSending] = useState(false);
@@ -106,8 +106,21 @@ export default function ChatWindow({ sessionId, onSessionCreate }) {
   const isEmpty = messages.length === 0;
 
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0 }}>
-      <div style={{ flex: 1, overflowY: 'auto', padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0, minWidth: 0 }}>
+      <button
+        onClick={onOpenChatList}
+        className="chat-list-toggle"
+        style={{
+          display: 'none', alignItems: 'center', gap: 8,
+          margin: '10px 14px 0', padding: '8px 12px', borderRadius: 8,
+          background: 'var(--bg-elevated)', border: '1px solid var(--border)',
+          color: 'var(--text-secondary)', fontSize: 13, fontFamily: 'var(--font-display)', fontWeight: 600,
+          alignSelf: 'flex-start',
+        }}
+      >
+        <MessagesSquare size={14} /> Your chats
+      </button>
+      <div style={{ flex: 1, overflowY: 'auto', padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: 20 }} className="chat-window-scroll">
 
         {loadingHistory ? (
           <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -135,7 +148,7 @@ export default function ChatWindow({ sessionId, onSessionCreate }) {
             <button onClick={handleRoadmap} className="btn btn-primary" style={{ gap: 8 }} disabled={sending}>
               <Map size={16} /> Generate My Roadmap
             </button>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, width: '100%', maxWidth: 500 }}>
+            <div className="grid-2" style={{ width: '100%', maxWidth: 500 }}>
               {STARTERS.map((s, i) => (
                 <button key={i} onClick={() => handleSend(s)} style={{
                   background: 'var(--bg-elevated)', border: '1px solid var(--border)',
@@ -199,6 +212,12 @@ export default function ChatWindow({ sessionId, onSessionCreate }) {
           Shift + Enter for new line · Enter to send
         </p>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .chat-list-toggle { display: inline-flex !important; }
+          .chat-window-scroll { padding: 18px 16px !important; }
+        }
+      `}</style>
     </div>
   );
 }

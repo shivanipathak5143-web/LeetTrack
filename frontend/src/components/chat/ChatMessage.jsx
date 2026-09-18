@@ -1,18 +1,23 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { motion } from 'framer-motion';
 import { Bot, User } from 'lucide-react';
 
 export default function ChatMessage({ message }) {
   const isUser = message.role === 'user';
 
   return (
-    <div style={{
-      display: 'flex',
-      gap: 12,
-      flexDirection: isUser ? 'row-reverse' : 'row',
-      alignItems: 'flex-start',
-      animation: 'fadeIn 0.3s ease forwards',
-    }}>
+    <motion.div
+      initial={{ opacity: 0, y: 10, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+      style={{
+        display: 'flex',
+        gap: 12,
+        flexDirection: isUser ? 'row-reverse' : 'row',
+        alignItems: 'flex-start',
+        maxWidth: '100%',
+      }}>
       {/* Avatar */}
       <div style={{
         width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
@@ -25,7 +30,7 @@ export default function ChatMessage({ message }) {
 
       {/* Bubble */}
       <div style={{
-        maxWidth: '72%',
+        maxWidth: 'min(72%, 560px)',
         background: isUser ? 'var(--accent-glow)' : 'var(--bg-elevated)',
         border: `1px solid ${isUser ? 'rgba(20, 89, 82, 0.25)' : 'var(--border)'}`,
         borderRadius: isUser ? '14px 4px 14px 14px' : '4px 14px 14px 14px',
@@ -50,6 +55,6 @@ export default function ChatMessage({ message }) {
             : ''}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

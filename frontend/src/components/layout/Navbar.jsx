@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Bell } from 'lucide-react';
+import { Bell, Menu } from 'lucide-react';
 import { getFavorites } from '../../api/logAPI';
 
 const titles = {
@@ -17,7 +17,7 @@ function daysSince(dateStr) {
   return (Date.now() - new Date(dateStr).getTime()) / (1000 * 60 * 60 * 24);
 }
 
-export default function Navbar() {
+export default function Navbar({ onMenuClick = () => {} }) {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [dueCount, setDueCount] = useState(0);
@@ -43,13 +43,25 @@ export default function Navbar() {
       display: 'flex', alignItems: 'center',
       padding: '0 40px', gap: 16,
       position: 'sticky', top: 0, zIndex: 50,
-    }}>
-      <div style={{ flex: 1 }}>
-        <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 20, letterSpacing: '-0.01em' }}>
+    }}
+      className="app-navbar"
+    >
+      <button className="menu-btn" onClick={onMenuClick} aria-label="Open menu">
+        <Menu size={18} />
+      </button>
+
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <h1 style={{
+          fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 20, letterSpacing: '-0.01em',
+          whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+        }} key={pathname} className="animate-in">
           {info.title}
         </h1>
         {info.sub && (
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)', marginTop: 1 }}>
+          <p style={{
+            fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)', marginTop: 1,
+            whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+          }} className="app-navbar-sub">
             {info.sub}
           </p>
         )}
@@ -58,13 +70,13 @@ export default function Navbar() {
         onClick={() => navigate('/revise')}
         title={dueCount > 0 ? `${dueCount} problem${dueCount === 1 ? '' : 's'} due for revision` : 'No problems due for revision'}
         style={{
-          position: 'relative', width: 38, height: 38, borderRadius: 8,
+          position: 'relative', width: 38, height: 38, borderRadius: 8, flexShrink: 0,
           background: 'var(--bg-elevated)', border: '1px solid var(--border)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          cursor: 'pointer', color: 'var(--text-secondary)', transition: 'all 0.15s'
+          cursor: 'pointer', color: 'var(--text-secondary)', transition: 'all 0.2s var(--ease-out)'
         }}
-        onMouseOver={e => e.currentTarget.style.borderColor = 'var(--accent)'}
-        onMouseOut={e => e.currentTarget.style.borderColor = 'var(--border)'}
+        onMouseOver={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.transform = 'scale(1.06)'; }}
+        onMouseOut={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.transform = 'scale(1)'; }}
       >
         <Bell size={15} />
         {dueCount > 0 && (
@@ -73,11 +85,20 @@ export default function Navbar() {
             borderRadius: 8, background: 'var(--red)', color: 'var(--accent-ink)',
             fontSize: 10, fontWeight: 700, display: 'flex', alignItems: 'center',
             justifyContent: 'center', padding: '0 4px', border: '2px solid var(--bg-surface)',
+            animation: 'popIn 0.3s var(--ease-out)',
           }}>
             {dueCount > 9 ? '9+' : dueCount}
           </span>
         )}
       </button>
+      <style>{`
+        @media (max-width: 768px) {
+          .app-navbar { padding: 0 16px; gap: 10px; }
+        }
+        @media (max-width: 420px) {
+          .app-navbar-sub { display: none; }
+        }
+      `}</style>
     </header>
   );
 }

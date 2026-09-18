@@ -52,7 +52,7 @@ export default function Profile() {
       <h1 className="page-title">Profile</h1>
       <p className="page-subtitle">Manage your account settings</p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '200px 1fr', gap: 24, maxWidth: 800 }}>
+      <div className="grid-sidebar-content" style={{ maxWidth: 800 }}>
         {/* Sidebar tabs */}
         <div className="card" style={{ padding: 8, height: 'fit-content' }}>
           {[

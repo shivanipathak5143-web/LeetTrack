@@ -1,4 +1,6 @@
-import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, Outlet, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { ToastProvider } from './context/ToastContext';
@@ -19,12 +21,29 @@ import Chat from './pages/Chat';
 import Profile from './pages/Profile';
 
 function AppLayout() {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const location = useLocation();
+
+  // Close the mobile drawer automatically whenever the route changes
+  useEffect(() => { setMobileNavOpen(false); }, [location.pathname]);
+
   return (
     <div className="layout">
-      <Sidebar />
+      <Sidebar isOpen={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
       <div className="main-content">
-        <Navbar />
-        <Outlet />
+        <Navbar onMenuClick={() => setMobileNavOpen(true)} />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}
+          >
+            <Outlet />
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );

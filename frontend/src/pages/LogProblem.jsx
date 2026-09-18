@@ -98,7 +98,7 @@ export default function LogProblem() {
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
           {/* Title + Slug */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div className="grid-2">
             <div className="form-group">
               <label className="form-label">Problem Title *</label>
               <input className="form-input" type="text" placeholder="Two Sum"
@@ -115,7 +115,7 @@ export default function LogProblem() {
           </div>
 
           {/* Difficulty + Time */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div className="grid-2">
             <div className="form-group">
               <label className="form-label">Difficulty</label>
               <select className="form-select" value={form.difficulty} onChange={set('difficulty')}>

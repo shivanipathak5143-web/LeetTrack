@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { Code2, Eye, EyeOff, ArrowRight } from 'lucide-react';
@@ -33,12 +34,17 @@ export default function Login() {
       position: 'relative', overflow: 'hidden',
     }}>
       {/* Left panel */}
-      <div style={{
+      <div className="login-left" style={{
         flex: 1, display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
         padding: '40px 60px', position: 'relative',
       }}>
-        <div style={{ width: '100%', maxWidth: 400 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          style={{ width: '100%', maxWidth: 400 }}
+        >
           {/* Logo */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 48 }}>
             <div style={{
@@ -121,7 +127,7 @@ export default function Login() {
               Create one
             </Link>
           </p>
-        </div>
+        </motion.div>
       </div>
 
       {/* Right panel — decorative */}
@@ -169,6 +175,7 @@ export default function Login() {
 
       <style>{`
         @media (min-width: 900px) { .login-right { display: flex !important; } }
+        @media (max-width: 480px) { .login-left { padding: 32px 22px !important; } }
       `}</style>
     </div>
   );

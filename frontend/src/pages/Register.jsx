@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { Code2, Eye, EyeOff, ArrowRight } from 'lucide-react';
@@ -35,7 +36,12 @@ export default function Register() {
       justifyContent: 'center', background: 'var(--bg-base)',
       padding: '40px 20px', position: 'relative', overflow: 'hidden',
     }}>
-      <div style={{ width: '100%', maxWidth: 440 }}>
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        style={{ width: '100%', maxWidth: 440 }}
+      >
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 40, justifyContent: 'center' }}>
           <div style={{
@@ -115,7 +121,7 @@ export default function Register() {
             <Link to="/login" style={{ color: 'var(--accent)', fontWeight: 600 }}>Sign in</Link>
           </p>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

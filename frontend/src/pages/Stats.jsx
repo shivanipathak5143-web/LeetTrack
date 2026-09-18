@@ -103,7 +103,7 @@ export default function Stats() {
       <p className="page-subtitle">Deep dive into your performance metrics</p>
 
       {/* Summary row */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14, marginBottom: 28 }}>
+      <div className="grid-4" style={{ marginBottom: 28 }}>
         {[
           { label: 'Total Solved', value: stats?.totalSolved || 0, color: 'var(--accent)' },
           { label: 'Easy', value: stats?.easySolved || 0, color: 'var(--green)' },
@@ -180,7 +180,7 @@ export default function Stats() {
         )}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
+      <div className="grid-2" style={{ marginBottom: 20 }}>
         {/* Difficulty pie */}
         <div className="card">
           <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 15, marginBottom: 20 }}>

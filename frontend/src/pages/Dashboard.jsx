@@ -62,7 +62,7 @@ export default function Dashboard() {
       </div>
 
       {/* Stats grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16, marginBottom: 24 }}>
+      <div className="grid-auto-fit" style={{ marginBottom: 24 }}>
         <StatsCard
           title="Total Solved"
           value={loading ? '—' : stats?.totalSolved ?? 0}
@@ -98,7 +98,7 @@ export default function Dashboard() {
       </div>
 
       {/* Middle row */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: 16, marginBottom: 24 }}>
+      <div className="grid-main-side" style={{ marginBottom: 24 }}>
         <ActivityGrid data={heatmap} />
         <StreakCard
           current={streak.currentStreak ?? 0}

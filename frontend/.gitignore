@@ -1,18 +1,5 @@
-# Dependencies
-
-node_modules/
-
-# Environment variables
-
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
 # Logs
-
-logs/
+logs
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -20,71 +7,18 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Build files
-
-dist/
-dist-ssr/
-build/
-out/
-
-# Local files
-
+node_modules
+dist
+dist-ssr
 *.local
 
-# Coverage
-
-coverage/
-.nyc_output/
-
-# Cache
-
-.cache/
-.parcel-cache/
-.eslintcache
-
-# Runtime data
-
-pids/
-*.pid
-*.seed
-*.pid.lock
-
-# Temporary files
-
-tmp/
-temp/
-*.tmp
-
-# OS generated files
-
-.DS_Store
-Thumbs.db
-
 # Editor directories and files
-
 .vscode/*
 !.vscode/extensions.json
-.idea/
+.idea
+.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-
-# Vite
-
-.vite/
-
-# Testing
-
-.jest/
-
-# TypeScript
-
-*.tsbuildinfo
-
-# Optional: local database files
-
-*.sqlite
-*.sqlite3
-*.db
